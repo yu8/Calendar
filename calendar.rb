@@ -14,7 +14,7 @@ class Calendar
     title = "#{@month}\s#{@year}" 
     title_blank = (21 - title.size) / 2
     week_line = "#{@week}"
-    if @month_start.cwday == 7
+    if @month_start.sunday?
       blank = 0
     else
       blank = @month_start.cwday * 3

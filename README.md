@@ -1,0 +1,18 @@
+Calendar
+========
+
+## Calendarクラスをつくる
+
+    calendar = Calendar.new(2013, 5) # 年、月を引数にとる
+    puts calendar.render
+
+
+    # =>
+
+          May 2013      
+    Su Mo Tu We Th Fr St
+              1  2  3  4
+     5  6  7  8  9 10 11
+    12 13 14 15 16 17 18
+    19 20 21 22 23 24 25
+    26 27 28 29 30 31

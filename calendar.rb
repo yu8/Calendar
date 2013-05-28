@@ -1,31 +1,27 @@
 require 'date'
 
 class Calendar
-  
+
+  WEEK = 'Su Mo Tu We Th Fr St'
+
   def initialize(year, month)
     @month = Date.new(year, month).strftime("%b")
     @year = year
-    @week = 'Su Mo Tu We Th Fr St'
     @month_start = Date.new(year, month, 1)
     @days = Array(1..Date.new(year, month, -1).day)
   end
 
   def render
     title = "#{@month}\s#{@year}" 
-    title_blank = (21 - title.size) / 2
-    week_line = "#{@week}"
-    if @month_start.sunday?
-      blank = 0
-    else
-      blank = @month_start.cwday * 3
-    end    
-    output = "\s" * title_blank + "#{title}\n#{week_line}\n" + "\s" * blank
+    blank = @month_start.wday * 3
+    output = "#{title.center(21)}\n#{WEEK}\n" + "\s" * blank
     @days.each do |day|
       ret =  @month_start.cwday + (day - 1)
+      output += day.to_s.rjust(2)
       if ret%7 == 6
-        output += "#{day.to_s.rjust(2)}\n"
+        output += "\n"
       else
-        output += "#{day.to_s.rjust(2)}\s"
+        output += "\s"
       end 
     end
     output
